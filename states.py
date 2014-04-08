@@ -30,6 +30,25 @@ states_np = np.array(states)
 
 states_dict = dict(states)
 
+#print len(states_np[:,0])
+#print states
+
+number_of_congressmen = {'WA':9, 'OR':5, 'CA':53, 'NV':3, 'AK':1, 'HI':2, \
+'ID':2, 'MT':1, 'WY':1, 'UT':3, 'AZ':8, 'NM':3, 'CO':7, 'ND':1, 'SD':1, \
+'NE':3, 'KS':4, 'OK':5, 'TX':32, 'LA':7, 'AR':4, 'MO':9, 'IA':5, 'MN':8, \
+'WI':8, 'IL':19, 'MI':15, 'IN':9, 'KY':6, 'TN':9, 'AL':7, 'MS':4, 'GA':13, \
+'FL':25, 'SC':6, 'NC':13, 'VA':11, 'WV':3, 'OH':18, 'PA':19, 'NY':29, \
+'VT':1, 'NH':2, 'ME':2, 'MA':10, 'RI':2, 'CT':5, 'NJ':13, 'DE':1, 'MD':8, 'DC':1}
+#print len(number_of_congressmen)
+
+# Normalize for number of congress representative
+for key1 in states_dict:
+	for key2 in number_of_congressmen:
+		if key1 == key2:
+			states_dict[key1] = states_dict[key1]/ number_of_congressmen[key1]
+
+#print states_dict
+
 
 # Histogram down here
 
@@ -52,6 +71,8 @@ ax.set_title(X+' in each state')
 plt.show()
 '''
 
+
+
 # Load the SVG map
 svg = open('states.svg', 'r').read()
 # Load into Beautiful Soup
@@ -63,7 +84,7 @@ colors = ["#edf8e9", "#c7e9c0", "#a1d99b", "#74c476", "#31a354", "#006d2c"]
 
 
 # State style
-path_style = 'font-size:12px;fill-rule:nonzero;stroke:#FFFFFF;stroke-opacity:1;stroke-width:0.1;\
+path_style = 'font-size:12px;fill-rule:nonzero;stroke:#FFFFFF;stroke-opacity:1;stroke-width:0.7;\
 stroke-miterlimit:4;stroke-dasharray:none;stroke-linecap:butt;\
 marker-start:none;stroke-linejoin:bevel;fill:'
 
@@ -73,32 +94,40 @@ for p in paths:
 		continue
 	if p['id'] != "path57":
 		# pass
-		if p['id'] not in ["MI-", "SP-"]:
-			try:
-				rate = states_dict[p['id']]
-			except:
-				continue
-		else:
+		if p['id'] in ["MI-", "SP-"]:
 			try:
 				rate = states_dict['MI']
 			except:
 				continue
+		else:
+			try:
+				rate = states_dict[p['id']]
+			except:
+				continue
 
-        min_value = states_np[:,1].astype(np.float).min()
-        max_value = states_np[:,1].astype(np.float).max()
+        #min_value = states_np[:,1][0].astype(np.float).min()
+        #max_value = states_np[:,1][0].astype(np.float).max()
+        min_value = min(states_dict.itervalues())
+        max_value = max(states_dict.itervalues())
 
         if rate > (max_value-min_value)*4/5:
             color_class = 5
+            #print color_class + p['id']
         elif rate > (max_value-min_value)*3/5:
             color_class = 4
+            #print color_class + p['id']
         elif rate > (max_value-min_value)*2/5:
             color_class = 3
+            #print color_class + p['id']
         elif rate > (max_value-min_value)*1/5:
             color_class = 2
+            #print color_class + p['id']
         elif rate > 0:
             color_class = 1
+            #print color_class + p['id']
         else:
             color_class = 0
+            #print color_class + p['id']
         color = colors[color_class]
         p['style'] = path_style + color
 
@@ -109,7 +138,7 @@ new_map = soup.prettify()
 
 #print new_map
 
-f = open('map.svg', 'w')
+f = open(X+'.svg', 'w')
 f.write(new_map)
 f.close()
 
