@@ -80,7 +80,7 @@ soup = BeautifulSoup(svg, selfClosingTags=['defs','sodipodi:namedview'])
 # Find states
 paths = soup.findAll('path')
 # Map colors
-colors = ["#edf8e9", "#c7e9c0", "#a1d99b", "#74c476", "#31a354", "#006d2c"]
+colors = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"]
 
 
 # State style
@@ -110,24 +110,20 @@ for p in paths:
         min_value = min(states_dict.itervalues())
         max_value = max(states_dict.itervalues())
 
-        if rate > (max_value-min_value)*4/5:
+        if rate > (max_value-min_value)*5/6:
+            color_class = 6
+        elif rate > (max_value-min_value)*4/6:
             color_class = 5
-            #print color_class + p['id']
-        elif rate > (max_value-min_value)*3/5:
+        elif rate > (max_value-min_value)*3/6:
             color_class = 4
-            #print color_class + p['id']
-        elif rate > (max_value-min_value)*2/5:
+        elif rate > (max_value-min_value)*2/6:
             color_class = 3
-            #print color_class + p['id']
-        elif rate > (max_value-min_value)*1/5:
+        elif rate > (max_value-min_value)/6:
             color_class = 2
-            #print color_class + p['id']
         elif rate > 0:
             color_class = 1
-            #print color_class + p['id']
         else:
             color_class = 0
-            #print color_class + p['id']
         color = colors[color_class]
         p['style'] = path_style + color
 
