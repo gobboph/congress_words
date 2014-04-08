@@ -76,23 +76,21 @@ marker-start:none;stroke-linejoin:bevel;fill:'
 
 # Color the states
 for p in paths:
-     
-    if p['id'] not in ["path57"]:
-        # pass
-        if p['id'] not in ["MI-", "SP-"]:
-        	try:
-            	rate = states_dict[p['id']]
-
-        	except:
-            	continue
+	if p['id'] not in ["path57"]:
+		# pass
+		if p['id'] not in ["MI-", "SP-"]:
+			try:
+				rate = states_dict[p['id']]
+			except:
+				continue
 		else:
 			try:
-				rate = states_dict['MI'] 
-        	except:
-        		continue
+				rate = states_dict['MI']
+			except:
+				continue
 
-        min_value = states_np[:,1].min()
-        max_value = states_np[:,1].max()
+        min_value = states_np[:,1].astype(np.float).min()
+        max_value = states_np[:,1].astype(np.float).max()
 
         if rate > (max_value-min_value)*4/5:
             color_class = 5
