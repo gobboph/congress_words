@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import requests
-import pprint
+#import pprint
 import numpy as np
 import matplotlib.pyplot as plt
 #import matplotlib.figure as fig
@@ -28,14 +28,11 @@ data= response.json()
 states = [(data['results'][i]['state'],data['results'][i]['count']) for i in range(len(data['results']))]
 states_np = np.array(states)
 
-print states_np[:,1]
-print states_np[:,0]
+#print states_np[:,1]
+#print states_np[:,0]
 
-pos = np.arange(len(states_np[:,0]))
-width = .7
-
-print len(states_np[:,0])
-print len(states_np[:,1])
+#print len(states_np[:,0])
+#print len(states_np[:,1])
 
 
 states_dict = dict(states)
@@ -44,6 +41,8 @@ states_dict = dict(states)
 # Histogram down here
 
 '''
+pos = np.arange(len(states_np[:,0]))
+width = .7
 font = {'family' : 'normal',
         'weight' : 'normal',
         'size'   : 8}
@@ -61,7 +60,7 @@ plt.show()
 '''
 
 # Load the SVG map
-svg = open('counties.svg', 'r').read()
+svg = open('states.svg', 'r').read()
 # Load into Beautiful Soup
 soup = BeautifulSoup(svg, selfClosingTags=['defs','sodipodi:namedview'])
 # Find states
@@ -80,12 +79,18 @@ for p in paths:
      
     if p['id'] not in ["path57"]:
         # pass
-        try:
-            rate = states_dict[p['id']]
+        if p['id'] not in ["MI-", "SP-"]:
+        	try:
+            	rate = states_dict[p['id']]
 
-        except:
-            continue
-        
+        	except:
+            	continue
+		else:
+			try:
+				rate = states_dict['MI'] 
+        	except:
+        		continue
+
         min_value = states_np[:,1].min()
         max_value = states_np[:,1].max()
 
@@ -103,6 +108,7 @@ for p in paths:
             color_class = 0
         color = colors[color_class]
         p['style'] = path_style + color
+
 
 
 # Output map
