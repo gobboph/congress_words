@@ -4,6 +4,7 @@ import requests
 import pprint
 import numpy as np
 import matplotlib.pyplot as plt
+import pylab
 
 query_params_peace = { 'apikey': '2cd8dea668b840f989b145e88cb2be80',
 				 #'per_page': 3,
@@ -101,6 +102,7 @@ elif X == 'P':
 	ax = plt.axes()
 	ax.set_xticks(pos + (width/2))
 	plt.bar(pos, difference, width, color='y')
+
 
 ax.set_xticklabels(states)
 ax.set_title('States')
