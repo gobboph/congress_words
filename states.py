@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 #import matplotlib.figure as fig
 #import pylab as pl
+from BeautifulSoup import BeautifulSoup
 
 
 
@@ -56,6 +57,14 @@ ax.set_title(X+' in each state')
 plt.show()
 '''
 
+# Load the SVG map
+svg = open('counties.svg', 'r').read()
+# Load into Beautiful Soup
+soup = BeautifulSoup(svg, selfClosingTags=['defs','sodipodi:namedview'])
+# Find counties
+paths = soup.findAll('path')
+# Map colors
+colors = ["#F1EEF6", "#D4B9DA", "#C994C7", "#DF65B0", "#DD1C77", "#980043"]
 
 
 
