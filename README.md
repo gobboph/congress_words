@@ -9,7 +9,7 @@ I make use of the BeautifulSoup module.
 
 Here are two examples. The first is a map generated using the word 'war':
 
-![alt text](war.png "war map")
+{% img img-thumbnail war.png 250 %}
 
 The second one is generated with 'peace':
 
