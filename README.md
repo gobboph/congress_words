@@ -7,13 +7,13 @@ It works using the API's of capitolwords.org, make sure to change my API key wit
 
 I make use of the BeautifulSoup module.
 
-Here are two examples. The first is a map generated using the word 'war':
+Here are two examples. The first is a map generated using the sentence 'green energy':
 
-![alt text](welfare.svg "welfare map")
+![alt text](green_energy.png "green energy map")
 
-The second one is generated with 'peace':
+The second one is generated with 'welfare':
 
-![alt text](peace.png "peace map")
+![alt text](welfare.png "welfare map")
 
 
 
