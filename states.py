@@ -76,7 +76,9 @@ marker-start:none;stroke-linejoin:bevel;fill:'
 
 # Color the states
 for p in paths:
-	if p['id'] not in ["path57"]:
+	if p['id'] == "path57":
+		continue
+	if p['id'] != "path57":
 		# pass
 		if p['id'] not in ["MI-", "SP-"]:
 			try:
@@ -110,8 +112,13 @@ for p in paths:
 
 
 # Output map
-print soup.prettify()
+new_map = soup.prettify()
 
+#print new_map
+
+f = open('map.svg', 'w')
+f.write(new_map)
+f.close()
 
 
 
