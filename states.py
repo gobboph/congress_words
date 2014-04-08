@@ -47,29 +47,6 @@ for key1 in states_dict:
 #print states_dict
 
 
-# Histogram down here
-
-'''
-pos = np.arange(len(states_np[:,0]))
-width = .7
-font = {'family' : 'normal',
-        'weight' : 'normal',
-        'size'   : 8}
-
-plt.rc('font', **font)
-
-figure = plt.bar(pos, states_np[:,1].astype(np.float), width, color='g')
-ax = plt.axes()
-ax.set_xticks(pos + (width/2))
-ax.set_xticklabels(states[:,0])
-ax.set_title(X+' in each state')
-
-
-plt.show()
-'''
-
-
-
 # Load the SVG map
 svg = open('states.svg', 'r').read()
 # Load into Beautiful Soup
@@ -101,9 +78,7 @@ for p in paths:
 				rate = states_dict[p['id']]
 			except:
 				continue
-
-        #min_value = states_np[:,1][0].astype(np.float).min()
-        #max_value = states_np[:,1][0].astype(np.float).max()
+				
         min_value = min(states_dict.itervalues())
         max_value = max(states_dict.itervalues())
 
