@@ -28,13 +28,6 @@ data= response.json()
 states = [(data['results'][i]['state'],data['results'][i]['count']) for i in range(len(data['results']))]
 states_np = np.array(states)
 
-#print states_np[:,1]
-#print states_np[:,0]
-
-#print len(states_np[:,0])
-#print len(states_np[:,1])
-
-
 states_dict = dict(states)
 
 
@@ -66,7 +59,7 @@ soup = BeautifulSoup(svg, selfClosingTags=['defs','sodipodi:namedview'])
 # Find states
 paths = soup.findAll('path')
 # Map colors
-colors = ["#F1EEF6", "#D4B9DA", "#C994C7", "#DF65B0", "#DD1C77", "#980043"]
+colors = ["#edf8e9", "#c7e9c0", "#a1d99b", "#74c476", "#31a354", "#006d2c"]
 
 
 # State style
