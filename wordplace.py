@@ -59,8 +59,6 @@ ax = plt.axes()
 ax.set_xticks(pos + (width/2))
 ax.set_xticklabels(states[:,0])
 ax.set_title(X+' in each state')
-#figure.set_size_inches(20,10)
-#fig.Figure(figsize = (20,10))
 
 
 plt.show()
