@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 
 import requests
-#import pprint
 import numpy as np
 import matplotlib.pyplot as plt
-#import matplotlib.figure as fig
-#import pylab as pl
 from BeautifulSoup import BeautifulSoup
 
 
