@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+import requests
+import pprint
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab
+
+
+
+X = raw_input('Which word do you want to look for? ').lower()
+
+
+query_params = { 'apikey': '2cd8dea668b840f989b145e88cb2be80',
+				 #'per_page': 3,
+		   		 'phrase': X,
+		   		 'sort': 'count desc'
+		 		}
+
+endpoint = "http://capitolwords.org/api/phrases/state.json"
+
+response = requests.get(endpoint, params=query_params)
+data= response.json()
+
+#pprint.pprint(data)
+#for i in range(len(data['results'])):
+#	print data['results'][i]['state'] + ' ' + str(data['results'][i]['count'])
+
+#print len(data['results'])
+
+#states = []
+
+#states = ([data['results'][i]['state'] for i in range(len(data['results']))], [data['results'][i]['count'] for i in range(len(data['results']))])
+
+#states[1] = [data['results'][i]['count'] for i in range(len(data['results']))]
+
+states = [(data['results'][i]['state'],data['results'][i]['count']) for i in range(len(data['results']))]
+states = np.array(states)
+
+print states[0,1]
+
+
+
