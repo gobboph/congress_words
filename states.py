@@ -26,16 +26,19 @@ data= response.json()
 
 
 states = [(data['results'][i]['state'],data['results'][i]['count']) for i in range(len(data['results']))]
-states = np.array(states)
+states_np = np.array(states)
 
-print states[:,1]
-print states[:,0]
+print states_np[:,1]
+print states_np[:,0]
 
-pos = np.arange(len(states[:,0]))
+pos = np.arange(len(states_np[:,0]))
 width = .7
 
-print len(states[:,0])
-print len(states[:,1])
+print len(states_np[:,0])
+print len(states_np[:,1])
+
+
+states_dict = dict(states)
 
 
 # Histogram down here
@@ -47,7 +50,7 @@ font = {'family' : 'normal',
 
 plt.rc('font', **font)
 
-figure = plt.bar(pos, states[:,1].astype(np.float), width, color='g')
+figure = plt.bar(pos, states_np[:,1].astype(np.float), width, color='g')
 ax = plt.axes()
 ax.set_xticks(pos + (width/2))
 ax.set_xticklabels(states[:,0])
@@ -61,10 +64,48 @@ plt.show()
 svg = open('counties.svg', 'r').read()
 # Load into Beautiful Soup
 soup = BeautifulSoup(svg, selfClosingTags=['defs','sodipodi:namedview'])
-# Find counties
+# Find states
 paths = soup.findAll('path')
 # Map colors
 colors = ["#F1EEF6", "#D4B9DA", "#C994C7", "#DF65B0", "#DD1C77", "#980043"]
+
+
+# State style
+path_style = 'font-size:12px;fill-rule:nonzero;stroke:#FFFFFF;stroke-opacity:1;stroke-width:0.1;\
+stroke-miterlimit:4;stroke-dasharray:none;stroke-linecap:butt;\
+marker-start:none;stroke-linejoin:bevel;fill:'
+
+# Color the states
+for p in paths:
+     
+    if p['id'] not in ["path57"]:
+        # pass
+        try:
+            rate = states_dict[p['id']]
+
+        except:
+            continue
+        
+        min_value = states_np[:,1].min()
+        max_value = states_np[:,1].max()
+
+        if rate > (max_value-min_value)*4/5:
+            color_class = 5
+        elif rate > (max_value-min_value)*3/5:
+            color_class = 4
+        elif rate > (max_value-min_value)*2/5:
+            color_class = 3
+        elif rate > (max_value-min_value)*1/5:
+            color_class = 2
+        elif rate > 0:
+            color_class = 1
+        else:
+            color_class = 0
+        color = colors[color_class]
+        p['style'] = path_style + color
+
+
+
 
 
 
