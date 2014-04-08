@@ -80,8 +80,8 @@ soup = BeautifulSoup(svg, selfClosingTags=['defs','sodipodi:namedview'])
 # Find states
 paths = soup.findAll('path')
 # Map colors
-colors = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"]
-
+#colors = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"]
+colors = ["#edf8e9", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#005a32"]
 
 # State style
 path_style = 'font-size:12px;fill-rule:nonzero;stroke:#FFFFFF;stroke-opacity:1;stroke-width:0.7;\
