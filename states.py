@@ -105,6 +105,9 @@ for p in paths:
         p['style'] = path_style + color
 
 
+# Output map
+print soup.prettify()
+
 
 
 
