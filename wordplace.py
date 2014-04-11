@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 
 import requests
-import pprint
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.figure as fig
-import pylab as pl
 
 
 
@@ -27,14 +24,14 @@ data= response.json()
 states = [(data['results'][i]['state'],data['results'][i]['count']) for i in range(len(data['results']))]
 states = np.array(states)
 
-print states[:,1]
-print states[:,0]
+#print states[:,1]
+#print states[:,0]
 
 pos = np.arange(len(states[:,0]))
 width = .7
 
-print len(states[:,0])
-print len(states[:,1])
+#print len(states[:,0])
+#print len(states[:,1])
 
 
 font = {'family' : 'normal',
