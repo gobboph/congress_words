@@ -9,7 +9,7 @@ I make use of the BeautifulSoup module.
 
 Here are two examples. The first is a map generated using the sentence 'green energy':
 
-![alt text](https://github.com/gobboph/congress_words/green_energy.png "green energy map")
+![alt text](green_energy.png "green energy map")
 
 The second one is generated with 'welfare':
 
