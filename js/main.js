@@ -1,8 +1,35 @@
 
+window.onload=function() {
+   	// Get the Object by ID
+   	var a = document.getElementById("svg");
+   	// Get the SVG document inside the Object tag
+   	var svgDoc = a.contentDocument;
+   	// Get one of the SVG items by ID;
+   	var svgItem = svgDoc.getElementsByClassName("state");
+   	//svgItem = $('path[class = "state"]');
+   	// Set the colour to something else
+   	for (var i=0; i<svgItem.length; i++) {
+	   	svgItem[i].setAttribute("fill", "#f00");
+   	}
+};
+
 function codeWord(word) {
 	var word = document.getElementById("word").value;
 	$("#typed_word").html(word);
 
+	
+	// Get the Object by ID
+   	var a = document.getElementById("svg");
+   	// Get the SVG document inside the Object tag
+   	var svgDoc = a.contentDocument;
+   	// Get one of the SVG items by ID;
+   	var svgItem = svgDoc.getElementsByClassName("state");
+   	//svgItem = $('path[class = "state"]');
+   	// Set the colour to something else
+   	for (var i=0; i<svgItem.length; i++) {
+	   	svgItem[i].setAttribute("fill", "#f00");
+   	}
+   	
 
 	// Get the Object by ID
 	var svgElem = document.getElementById("svg");
@@ -30,16 +57,7 @@ $("#word-form").on("submit", function(e) {
 
 //Function to just color a state
 
-// window.onload=function() {
-//    	// Get the Object by ID
-//    	var a = document.getElementById("svg");
-//    	// Get the SVG document inside the Object tag
-//    	var svgDoc = a.contentDocument;
-//    	// Get one of the SVG items by ID;
-//    	var svgItem = svgDoc.getElementById("NY");
-//    	// Set the colour to something else
-//    	svgItem.setAttribute("fill", "#bada55");
-// };
+
 
 
 
