@@ -4,17 +4,6 @@ function codeWord(word) {
 	$("#typed_word").html(word);
 
 
-//	var svgElement=document.getElementById("svg"); 
-//	var s = Snap(svgElement);
-
-//	var s = Snap(1000,1000)
-
-	// Snap.load("img/states.svg", function (f) {
-	// 		var selection = f.select("#"+word).attr({fill:"#bada55"});
-	// 		s.append(f);
-	// 		selection.drag();
-	// 	});
-
 	// Get the Object by ID
 	var svgElem = document.getElementById("svg");
 	// Get the SVG document inside the Object tag
@@ -27,6 +16,20 @@ function codeWord(word) {
 	return false;
 };
 
+
+$("#word-form").on("submit", function(e) {
+	e.preventDefault();
+	console.log( $("#word").val() );
+	codeWord( $("#word").val() ); //need to define this function taking API's
+	//return false;
+});
+
+
+
+
+
+//Function to just color a state
+
 // window.onload=function() {
 //    	// Get the Object by ID
 //    	var a = document.getElementById("svg");
@@ -38,11 +41,20 @@ function codeWord(word) {
 //    	svgItem.setAttribute("fill", "#bada55");
 // };
 
-$("#word-form").on("submit", function(e) {
-	e.preventDefault();
-	console.log( $("#word").val() );
-	codeWord( $("#word").val() ); //need to define this function taking API's
-	//return false;
-});
+
+
+// Put this in function to use Snap instead of just js
+
+// var svgElement=document.getElementById("svg"); 
+// var s = Snap(svgElement);
+// var s = Snap(1000,1000)
+// Snap.load("img/states.svg", function (f) {
+// 		var selection = f.select("#"+word).attr({fill:"#bada55"});
+// 		s.append(f);
+// 		selection.drag();
+// 	});
+
+
+
 
 
