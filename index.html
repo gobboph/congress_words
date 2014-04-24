@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>bla</title>
+        <meta name="description" content="avere">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+        <!-- <script src="dist/snap.svg.js"></script> -->
+
+    </head>
+    <body>
+
+        <!-- Add your site or application content here -->
+
+        <h1>Congress Words</h1>
+
+        <h2>Type the two letters for the state in capital</h2>
+
+        <form class="form-inline" id="word-form">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="welfare" id="word">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Generate Map</button>
+                </span>
+            </div>
+        </form>
+
+
+
+
+
+        <p>Word you typed: <span id="typed_word">?</span> </p>
+
+
+        <!--<svg id="svg"></svg>-->
+
+        <object id="svg" data="img/states.svg" type="image/svg+xml" height="1000" width="1000"></object>
+        <!--<embed class="emb" src="images/states.svg" width="200" height="200" type="image/svg+xml" />-->
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <!-- Here for svg.js -->
+        <!--<script src="http://cdn.jsdelivr.net/svg.js/0.6/svg.min.js"></script>-->
+        <!-- <script type='text/javascript' src='js/main.js'></script> -->
+
+    </body>
+</html>
