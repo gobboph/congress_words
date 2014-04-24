@@ -9,7 +9,7 @@ window.onload=function() {
    	//svgItem = $('path[class = "state"]');
    	// Set the colour to something else
    	for (var i=0; i<svgItem.length; i++) {
-	   	svgItem[i].setAttribute("fill", "#f00");
+	   	svgItem[i].setAttribute("fill", "#696969");
    	}
 };
 
@@ -49,7 +49,9 @@ function codeWord(word) {
 
 	for (var key in number_of_congressmen){
 		for (var i=0;i<svgAllItems.length;i++){
-
+			if (svgAllItems[i].id === 'MI-' || svgAllItems[i].id === 'SP-') {
+				svgAllItems[i].setAttribute('id', 'MI');
+			};
 			if (key === svgAllItems[i].id){
 				//console.log('eccolo');
 				console.log(key+' '+svgAllItems[i].id);
@@ -73,7 +75,7 @@ function codeWord(word) {
 	// Get one of the SVG items by ID;
 	var svgItem = svgDoc.getElementById(word);
 	// Set the colour to something else
-	svgItem.setAttribute("fill", "#bada55");
+	svgItem.setAttribute("fill", "#000");
 
 	return false;
 };
