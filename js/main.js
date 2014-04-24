@@ -31,7 +31,6 @@ function codeWord(word) {
 	$("#typed_word").html(word);
 
 	
-	var IDs_list = new Array();
 
 	// Get the Object by ID
    	var svgElem = document.getElementById("svg");
@@ -39,19 +38,19 @@ function codeWord(word) {
    	var svgDoc = svgElem.contentDocument;
    	// Get one of the SVG items by class;
    	var svgAllItems = svgDoc.getElementsByClassName("state");
-   	// Set the colour to something else
-   	// for (var i=0; i<svgAllItems.length; i++) {
-	   // 	svgAllItems[i].setAttribute("fill", "#f00");
-   	// }
 
 
    	//Setting 3 different colors according to how many congressmen they have
 
 	for (var key in number_of_congressmen){
 		for (var i=0;i<svgAllItems.length;i++){
+
+			// fixing Michingan
 			if (svgAllItems[i].id === 'MI-' || svgAllItems[i].id === 'SP-') {
 				svgAllItems[i].setAttribute('id', 'MI');
 			};
+
+			//set Colors
 			if (key === svgAllItems[i].id){
 				//console.log('eccolo');
 				console.log(key+' '+svgAllItems[i].id);
