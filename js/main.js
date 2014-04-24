@@ -45,6 +45,8 @@ function codeWord(word) {
    	// }
 
 
+   	//Setting 3 different colors according to how many congressmen they have
+
 	for (var key in number_of_congressmen){
 		for (var i=0;i<svgAllItems.length;i++){
 
@@ -53,8 +55,10 @@ function codeWord(word) {
 				console.log(key+' '+svgAllItems[i].id);
 				if (parseInt(number_of_congressmen[key])<6){
 					svgAllItems[i].setAttribute("fill", "#0f0");
-				} else {
+				} else if (5<parseInt(number_of_congressmen[key]) && parseInt(number_of_congressmen[key])<16){
 					svgAllItems[i].setAttribute("fill", "#00f");
+				} else {
+					svgAllItems[i].setAttribute("fill", "#f00");
 				};
 			} //else {
 			// 	console.log('non cisti');
