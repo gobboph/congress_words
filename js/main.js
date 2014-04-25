@@ -136,6 +136,28 @@ function codeWord(word) {
 
 
 
+	function min(double_vector, column) {
+		var MIN = double_vector[0][column];
+		for (var i=0;i<double_vector.length;i++){
+			if (double_vector[i][column]<MIN){
+				MIN = double_vector[i][column];
+			};
+		};
+		return MIN;
+	};
+
+
+	function max(double_vector, column) {
+		var MAX = double_vector[0][column];
+		for (var i=0;i<double_vector.length;i++){
+			if (double_vector[i][column]>MIN){
+				MAX = double_vector[i][column];
+			};
+		};
+		return MAX;
+	};
+
+
 
 
    	//Setting 3 different colors according to how many congressmen they have
