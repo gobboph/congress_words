@@ -113,6 +113,11 @@ function codeWord(word) {
 		var rate = 0
 		// Normalizing data
 		for (var key in number_of_congressmen){
+			// Fixing for states who have not pronunced it
+			if (!(key in data)){
+				data.push((key,0));
+			};
+
 			for (var i=0; i<data.length; i++){
 				if (key === data[i][0]){
 					data[i][1] = data[i][1] / number_of_congressmen[key];
@@ -120,13 +125,29 @@ function codeWord(word) {
 			};
 		};
 
+		var MIN = min(data,1);
+		var MAX = max(data,1);
+		var colors = ("#edf8e9", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#005a32")
+
+
+
 		for (var i=0; i<svgAllItems.length;i++){
 			for (var j=0; j<data.length; j++){
 				if (svgAllItems[i].id === data[j][0]){
-					if (data[j][1]<200){
-						svgAllItems[i].setAttribute("fill", "#0f0");
+					if (data[j][1] > (MAX-MIN) * 5 / 6){
+						svgAllItems[i].setAttribute('fill', "#005a32");
+					} else if (data[j][1] > (MAX-MIN) * 4 / 6){
+						svgAllItems[i].setAttribute('fill',"#238b45");
+					} else if (data[j][1] > (MAX-MIN) * 3 / 6){
+						svgAllItems[i].setAttribute('fill', "#41ab5d");
+					} else if (data[j][1] > (MAX-MIN) * 2 / 6){
+						svgAllItems[i].setAttribute('fill',"#74c476");
+					} else if (data[j][1] > (MAX-MIN) / 6) {
+						svgAllItems[i].setAttribute('fill',"#a1d99b");
+					} else if (data[j][1] > 0){
+						svgAllItems[i].setAttribute('fill',"#c7e9c0");
 					} else {
-						svgAllItems[i].setAttribute("fill", "#00f");
+						svgAllItems[i].setAttribute('fill',"#edf8e9");
 					};
 				};
 			};
@@ -150,7 +171,7 @@ function codeWord(word) {
 	function max(double_vector, column) {
 		var MAX = double_vector[0][column];
 		for (var i=0;i<double_vector.length;i++){
-			if (double_vector[i][column]>MIN){
+			if (double_vector[i][column]>MAX){
 				MAX = double_vector[i][column];
 			};
 		};
