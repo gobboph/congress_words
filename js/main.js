@@ -39,6 +39,8 @@ var number_of_congressmen = {'WA':9, 'OR':5, 'CA':53, 'NV':3, 'AK':1, 'HI':2,
 //console.log(number_of_congressmen.WA);
 
 
+//Main function
+
 function codeWord(word) {
 	var word = document.getElementById("word").value;
 	$("#typed_word").html(word);
@@ -52,8 +54,12 @@ function codeWord(word) {
    	// Get one of the SVG items by class;
    	var svgAllItems = svgDoc.getElementsByClassName("state");
 
-   	
-
+   	// fixing Michingan
+	for (var i=0;i<svgAllItems.length;i++){
+			if (svgAllItems[i].id === 'MI-' || svgAllItems[i].id === 'SP-') {
+				svgAllItems[i].setAttribute('id', 'MI');
+			};
+	};
 	
 	   	// API call
 	function getData(myCallback){
@@ -93,6 +99,7 @@ function codeWord(word) {
 		console.log('data '+data.length);
 		console.log(typeof(data[0]));
 		console.log(data[0][0]+' '+data[0][1]);
+		colourMyMap(data);
 		//return data;
 	};
 
@@ -102,47 +109,69 @@ function codeWord(word) {
 
 
 
-	
-
-
-
-
-	
-   	//Setting 3 different colors according to how many congressmen they have
-
-	for (var key in number_of_congressmen){
-		for (var i=0;i<svgAllItems.length;i++){
-
-			// fixing Michingan
-			if (svgAllItems[i].id === 'MI-' || svgAllItems[i].id === 'SP-') {
-				svgAllItems[i].setAttribute('id', 'MI');
-			};
-
-			//set Colors
-			if (key === svgAllItems[i].id){
-				//console.log('eccolo');
-				//console.log(key+' '+svgAllItems[i].id);
-				if (parseInt(number_of_congressmen[key])<6){
-					svgAllItems[i].setAttribute("fill", "#0f0");
-				} else if (5<parseInt(number_of_congressmen[key]) && parseInt(number_of_congressmen[key])<16){
-					svgAllItems[i].setAttribute("fill", "#00f");
-				} else {
-					svgAllItems[i].setAttribute("fill", "#f00");
+	function colourMyMap(data){
+		var rate = 0
+		// Normalizing data
+		for (var key in number_of_congressmen){
+			for (var i=0; i<data.length; i++){
+				if (key === data[i][0]){
+					data[i][1] = data[i][1] / number_of_congressmen[key];
 				};
-			} //else {
-			// 	console.log('non cisti');
-			// };
+			};
 		};
+
+		for (var i=0; i<svgAllItems.length;i++){
+			for (var j=0; j<data.length; j++){
+				if (svgAllItems[i].id === data[j][0]){
+					if (data[j][1]<200){
+						svgAllItems[i].setAttribute("fill", "#0f0");
+					} else {
+						svgAllItems[i].setAttribute("fill", "#00f");
+					};
+				};
+			};
+		};
+			
 	};
 
 
+
+
+
+   	//Setting 3 different colors according to how many congressmen they have
+
+	// for (var key in number_of_congressmen){
+	// 	for (var i=0;i<svgAllItems.length;i++){
+
+	// 		// fixing Michingan
+	// 		if (svgAllItems[i].id === 'MI-' || svgAllItems[i].id === 'SP-') {
+	// 			svgAllItems[i].setAttribute('id', 'MI');
+	// 		};
+
+	// 		//set Colors
+	// 		if (key === svgAllItems[i].id){
+	// 			//console.log('eccolo');
+	// 			//console.log(key+' '+svgAllItems[i].id);
+	// 			if (parseInt(number_of_congressmen[key])<6){
+	// 				svgAllItems[i].setAttribute("fill", "#0f0");
+	// 			} else if (5<parseInt(number_of_congressmen[key]) && parseInt(number_of_congressmen[key])<16){
+	// 				svgAllItems[i].setAttribute("fill", "#00f");
+	// 			} else {
+	// 				svgAllItems[i].setAttribute("fill", "#f00");
+	// 			};
+	// 		} //else {
+	// 		// 	console.log('non cisti');
+	// 		// };
+	// 	};
+	// };
+
 	
 
 
-	// Get one of the SVG items by ID;
-	var svgItem = svgDoc.getElementById(word);
-	// Set the colour to something else
-	svgItem.setAttribute("fill", "#000");
+	// // Get one of the SVG items by ID;
+	// var svgItem = svgDoc.getElementById(word);
+	// // Set the colour to something else
+	// svgItem.setAttribute("fill", "#000");
 
 	return false;
 };
