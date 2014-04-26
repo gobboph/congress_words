@@ -1,21 +1,17 @@
 congress_words
 =========
 
-states.py takes your word or phrase of choice as an input and it outputs a map of the US showing how many times each state has a representative saying that word or phrase in congress, normalized by the number of congress members for each state. It outputs a .svg file.
+Here is the html and javascript code for the congress_words project.
 
-It works using the API's of capitolwords.org, make sure to change my API key with yours when trying it out.
+You can see the outcome directly in your browser [here](http://gobboph.github.io/congress_words/). Just type a word or expression of your choice and generate a map colored in different shades depending on how many times a member of each state pronounced that word or expression, normalized by the number of congress members per state.
 
-I make use of the BeautifulSoup module.
+For a python script that generates .svg files, check out the master branch of this project. Notice, however, that this branch does not use python, but everything is encoded in javascript, making things easier and faster for internet support. 
 
-Here are two examples. The first is a map generated using the sentence 'green energy':
+The whole project works using the API's of capitolwords.org.
 
-![alt text](green_energy.png "green energy map")
+If you do not believe that the result is cool, here is an example generated using the python script. But again, go try it yourself [here](http://gobboph.github.io/congress_words/)!
 
-The second one is generated with 'welfare':
+This map is generated using the word 'welfare':
 
 ![alt text](welfare.png "welfare map")
-
-
-
-wordplace.py, instead, just shows a histogram of how many times you sentence is used by each state.
 
