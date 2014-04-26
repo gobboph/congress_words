@@ -11,7 +11,7 @@ window.onload=function() {
    	// Set the colour to something else
    	for (var i=0; i<svgItem.length; i++) {
 	   	svgItem[i].setAttribute("fill", "#696969");
-   	}
+   	};
 };
 
 
@@ -60,6 +60,7 @@ function codeWord(word) {
 				svgAllItems[i].setAttribute('id', 'MI');
 			};
 	};
+
 	
 	   	// API call
 	function getData(myCallback){
@@ -98,7 +99,7 @@ function codeWord(word) {
 		};
 		console.log('data '+data.length);
 		console.log(typeof(data[0]));
-		console.log(data[0][0]+' '+data[0][1]);
+		//console.log(data);
 		colourMyMap(data);
 		//return data;
 	};
@@ -110,49 +111,53 @@ function codeWord(word) {
 
 
 	function colourMyMap(data){
-		var rate = 0
+
+		//Setting to light green color all the states that do not appear, i.e. they have not said word
+		for (var i=0; i<svgAllItems.length; i++) {
+		   	svgAllItems[i].setAttribute("fill", "#edf8e9");
+   		};
+
 		// Normalizing data
 		for (var key in number_of_congressmen){
-			// Fixing for states who have not pronunced it
-			if (!(key in data)){
-				data.push((key,0));
-			};
-
 			for (var i=0; i<data.length; i++){
+				//var check = 0;
 				if (key === data[i][0]){
 					data[i][1] = data[i][1] / number_of_congressmen[key];
+				//	check = 1;
 				};
 			};
 		};
 
-		var MIN = min(data,1);
-		var MAX = max(data,1);
-		var colors = ("#edf8e9", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#005a32")
+		if (data.length != 0) {
+			var MIN = min(data,1);
+			var MAX = max(data,1);
+			var colors = ("#edf8e9", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#005a32")
 
 
 
-		for (var i=0; i<svgAllItems.length;i++){
-			for (var j=0; j<data.length; j++){
-				if (svgAllItems[i].id === data[j][0]){
-					if (data[j][1] > (MAX-MIN) * 5 / 6){
-						svgAllItems[i].setAttribute('fill', "#005a32");
-					} else if (data[j][1] > (MAX-MIN) * 4 / 6){
-						svgAllItems[i].setAttribute('fill',"#238b45");
-					} else if (data[j][1] > (MAX-MIN) * 3 / 6){
-						svgAllItems[i].setAttribute('fill', "#41ab5d");
-					} else if (data[j][1] > (MAX-MIN) * 2 / 6){
-						svgAllItems[i].setAttribute('fill',"#74c476");
-					} else if (data[j][1] > (MAX-MIN) / 6) {
-						svgAllItems[i].setAttribute('fill',"#a1d99b");
-					} else if (data[j][1] > 0){
-						svgAllItems[i].setAttribute('fill',"#c7e9c0");
-					} else {
-						svgAllItems[i].setAttribute('fill',"#edf8e9");
+			for (var i=0; i<svgAllItems.length;i++){
+				for (var j=0; j<data.length; j++){
+					if (svgAllItems[i].id === data[j][0]){
+						if (data[j][1] > (MAX-MIN) * 5 / 6){
+							svgAllItems[i].setAttribute('fill', "#005a32");
+						} else if (data[j][1] > (MAX-MIN) * 4 / 6){
+							svgAllItems[i].setAttribute('fill',"#238b45");
+						} else if (data[j][1] > (MAX-MIN) * 3 / 6){
+							svgAllItems[i].setAttribute('fill', "#41ab5d");
+						} else if (data[j][1] > (MAX-MIN) * 2 / 6){
+							svgAllItems[i].setAttribute('fill',"#74c476");
+						} else if (data[j][1] > (MAX-MIN) / 6) {
+							svgAllItems[i].setAttribute('fill',"#a1d99b");
+						} else if (data[j][1] > 0){
+							svgAllItems[i].setAttribute('fill',"#c7e9c0");
+						} else {
+							svgAllItems[i].setAttribute('fill',"#edf8e9");
+						};
 					};
 				};
 			};
 		};
-			
+
 	};
 
 
@@ -179,43 +184,6 @@ function codeWord(word) {
 	};
 
 
-
-
-   	//Setting 3 different colors according to how many congressmen they have
-
-	// for (var key in number_of_congressmen){
-	// 	for (var i=0;i<svgAllItems.length;i++){
-
-	// 		// fixing Michingan
-	// 		if (svgAllItems[i].id === 'MI-' || svgAllItems[i].id === 'SP-') {
-	// 			svgAllItems[i].setAttribute('id', 'MI');
-	// 		};
-
-	// 		//set Colors
-	// 		if (key === svgAllItems[i].id){
-	// 			//console.log('eccolo');
-	// 			//console.log(key+' '+svgAllItems[i].id);
-	// 			if (parseInt(number_of_congressmen[key])<6){
-	// 				svgAllItems[i].setAttribute("fill", "#0f0");
-	// 			} else if (5<parseInt(number_of_congressmen[key]) && parseInt(number_of_congressmen[key])<16){
-	// 				svgAllItems[i].setAttribute("fill", "#00f");
-	// 			} else {
-	// 				svgAllItems[i].setAttribute("fill", "#f00");
-	// 			};
-	// 		} //else {
-	// 		// 	console.log('non cisti');
-	// 		// };
-	// 	};
-	// };
-
-	
-
-
-	// // Get one of the SVG items by ID;
-	// var svgItem = svgDoc.getElementById(word);
-	// // Set the colour to something else
-	// svgItem.setAttribute("fill", "#000");
-
 	return false;
 };
 
@@ -223,7 +191,7 @@ function codeWord(word) {
 $("#word-form").on("submit", function(e) {
 	e.preventDefault();
 	console.log( $("#word").val() );
-	codeWord( $("#word").val() ); //need to define this function taking API's
+	codeWord( $("#word").val() ); // Define codeword to do whatever I want to do with word
 	//return false;
 });
 
