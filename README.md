@@ -23,6 +23,6 @@ This one is generated using 'welfare':
 
 Enjoy and let me know what you think.
 
-[robertogobbetti.com](robertogobbetti.com)
+[robertogobbetti.com](http://gobboph.github.io/)
 
 
