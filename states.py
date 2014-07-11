@@ -29,7 +29,7 @@ states_dict = dict(states)
 #print len(states_np[:,0])
 #print states
 
-var number_of_congressmen = {'WA':12, 'OR':7, 'CA':55, 'NV':6, 'AK':3, 'HI':4,
+number_of_congressmen = {'WA':12, 'OR':7, 'CA':55, 'NV':6, 'AK':3, 'HI':4,
 'ID':4, 'MT':3, 'WY':3, 'UT':6, 'AZ':11, 'NM':5, 'CO':9, 'ND':3, 'SD':3,
 'NE':5, 'KS':6, 'OK':7, 'TX':38, 'LA':8, 'AR':6, 'MO':10, 'IA':6, 'MN':10,
 'WI':10, 'IL':21, 'MI':16, 'IN':11, 'KY':8, 'TN':11, 'AL':9, 'MS':6, 'GA':16,
