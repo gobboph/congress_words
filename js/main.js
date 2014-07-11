@@ -29,12 +29,12 @@ function showResponse (response) {
 
 
 // Dictionary with congress members per state
-var number_of_congressmen = {'WA':10, 'OR':5, 'CA':53, 'NV':4, 'AK':1, 'HI':2,
-'ID':2, 'MT':1, 'WY':1, 'UT':4, 'AZ':9, 'NM':3, 'CO':7, 'ND':1, 'SD':1,
-'NE':3, 'KS':4, 'OK':5, 'TX':36, 'LA':6, 'AR':4, 'MO':8, 'IA':4, 'MN':8,
-'WI':8, 'IL':19, 'MI':14, 'IN':9, 'KY':6, 'TN':9, 'AL':7, 'MS':4, 'GA':14,
-'FL':27, 'SC':7, 'NC':13, 'VA':11, 'WV':3, 'OH':16, 'PA':18, 'NY':27,
-'VT':1, 'NH':2, 'ME':2, 'MA':9, 'RI':2, 'CT':5, 'NJ':12, 'DE':1, 'MD':8, 'DC':1};
+var number_of_congressmen = {'WA':12, 'OR':7, 'CA':55, 'NV':6, 'AK':3, 'HI':4,
+'ID':4, 'MT':3, 'WY':3, 'UT':6, 'AZ':11, 'NM':5, 'CO':9, 'ND':3, 'SD':3,
+'NE':5, 'KS':6, 'OK':7, 'TX':38, 'LA':8, 'AR':6, 'MO':10, 'IA':6, 'MN':10,
+'WI':10, 'IL':21, 'MI':16, 'IN':11, 'KY':8, 'TN':11, 'AL':9, 'MS':6, 'GA':16,
+'FL':29, 'SC':9, 'NC':15, 'VA':13, 'WV':5, 'OH':18, 'PA':20, 'NY':29,
+'VT':3, 'NH':4, 'ME':4, 'MA':11, 'RI':4, 'CT':7, 'NJ':14, 'DE':3, 'MD':10, 'DC':3};
 
 //console.log(number_of_congressmen.WA);
 
