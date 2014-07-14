@@ -62,7 +62,7 @@ function codeWord(word) {
 	};
 
 	
-	   	// API call
+	// API call
 	function getData(myCallback){
    		var query_params = { 'apikey': '2cd8dea668b840f989b145e88cb2be80',
 					 //'per_page': 3,
