@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Congress Words</title>
+        <meta name="description" content="avere">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+        <!-- <script src="dist/snap.svg.js"></script> -->
+
+        <!-- <style type="css/main.css"> -->
+
+        <style>
+        	.page { 
+       			padding-top: 80px;
+        		padding-bottom: 60px;
+      		}
+        	.footer {
+				padding-top: 80px;
+				margin-top: -280px;
+			}
+        </style>
+
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49755439-2', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+
+    </head>
+    <body>
+
+        <!-- Add your site or application content here -->
+
+        <h1>Congress Words</h1>
+
+        <h3>Type a word of your choice</h3>
+        <h5>You will generate a map colored based on how many times a member of congress from a state said that word in congress, normalized by the number of congress members per state.</h5>
+        <h5>The darker the green, the more times it has been said compared to the other states.</h5>
+
+        <!--<h5 style='color:red'>NOTE: as of today 04-29-2014 capitolwords server is experiencing problems and is not being able to process any request. Hopefully this will be fixed soon.</h5>-->
+
+        <form class="form-inline" id="word-form">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="welfare" id="word">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Generate Map</button>
+                </span>
+            </div>
+        </form>
+
+
+
+
+
+        <p>This is the map for <span id="typed_word">?</span></p>
+
+
+        <!--<svg id="svg"></svg>-->
+
+        <object id="svg" data="img/states.svg" type="image/svg+xml" height="1000" width="1000"></object>
+        <!--<embed class="emb" src="images/states.svg" width="200" height="200" type="image/svg+xml" />-->
+
+
+        <!-- Show results of API's call -->
+<!--         <div>URL:<a id="url"></a></div>
+        <hr>
+        <div>
+            <pre id="output">
+                
+            </pre>
+        </div>
+ -->
+
+ 		<div>
+	 		<footer class='footer'>
+ 				<p>
+ 					&copy; Roberto Gobbetti |
+ 					<a href="http://www.robertogobbetti.com">robertogobbetti.com</a> |
+ 					<a href="mailto:robertoobbetti@gmail.com">Contact me</a>
+ 				</p>
+ 			</footer>
+ 		</div>
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <!-- Here for svg.js -->
+        <!--<script src="http://cdn.jsdelivr.net/svg.js/0.6/svg.min.js"></script>-->
+        <!-- <script type='text/javascript' src='js/main.js'></script> -->
+
+    </body>
+</html>
